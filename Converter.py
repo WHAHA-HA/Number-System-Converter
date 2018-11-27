@@ -1,6 +1,6 @@
 #Number System Converter
 
-#Created on:13/11/2018 9:36 am
+#Created on: 13/11/2018 9:36 am
 #version 1.0.0: Created the basic GUI and Decimal to Binary Converter+Bug Fixes(in the previous code)
     #Known Issues: Quit Button NOT WORKING,
     #Decimal to Binary Window widgets NOT EXPANDING TO FIT ACCORDING TO SCREEN-SIZE
@@ -8,19 +8,22 @@
 #version 1.0.1: Fixed: Decimal to Binary Window widgets NOT EXPANDING TO FIT ACCORDING TO SCREEN-SIZE
                 #Updated the Interface
     #Known Issues: Quit Button NOT WORKING
-    #Updated on:25/11/2018 8:48 am
+    #Updated on: 25/11/2018 8:48 am
 
 #version 1.0.2: Added Binary to Octal Function
     #Known Issues: Quit Button NOT WORKING
-    #Updated on:25/11/2018 9:16 am
+    #Updated on: 25/11/2018 9:16 am
 
 #version 1.0.3: Added Binary to Octal Converter
     #Known Issues: Quit Button NOT WORKING
-    #Updated on:25/11/2018 9:22 am
+    #Updated on: 25/11/2018 9:22 am
 
-#version 1.0.4: Added Decimal to Octal Converter
+#version 1.0.4: Added Decimal to Hexadecimal Function
     #Known Issues: Quit Button NOT WORKING
-    #Updated on:25/11/2018 9:26 am
+    #Updated on: 25/11/2018 9:26 am
+
+#version 1.0.5: Fixed: Quit Button NOT WORKING (Outside editor ONLY)
+    #Updated on: 27/11/2018 9:55 pm
 
 
 #importing modules
@@ -348,6 +351,96 @@ def bin_oct(num):
     #returning the result
 
     return octal
+
+#Function for converting Binary to Hexadecimal
+
+def bin_hex(num):
+
+    #using the input (Eliminating a few potential errors)
+    
+    num=str(num)
+    num.lstrip()
+    num.rstrip()
+
+    #initializing variables set 1
+    
+    hexadecimal=''
+    flagbin=False
+    integer=''
+    decimal=''
+
+    #defining the number mapping
+    
+    NumMap={'0000':'0','0001':'1','0010':'2','0011':'3','0100':'4','0101':'5','0110':'6','0111':'7',\
+            '1000':'8','1001':'9','1010':'A','1011':'B','1100':'C','1101':'D','1110':'E','1111':'F'}
+
+    #checking whether the input is a number
+
+    for i in num:
+        if i=='.' and flagbin==False:
+            flagbin=True
+        elif ((i not in ('0','1')) and i!='.') or (i=='.' and flagbin==True):
+            return 'Wrong Input. Please check the input again.'
+
+    #separating the integer and float part
+    
+    for i in range(len(num)):
+        if num[i]=='.':
+            decimal=num[i+1:]
+            break
+        integer+=num[i]
+        
+    if decimal=='':
+        decimal='0'
+
+    #initializing variables set 2
+
+    end_marker=len(integer)
+    begining_marker=len(integer)
+        
+    #slicing out 4 digits and geting the corresponding map
+
+    while end_marker>0:
+        begining_marker-=4
+        if begining_marker<0:
+            begining_marker=0
+        sliced=num[begining_marker:end_marker]
+        while len(sliced)<4:
+            sliced='0'+sliced
+        hexadecimal=NumMap[sliced]+hexadecimal
+        end_marker=begining_marker
+
+    #stripping the 0's to the left and returning 0 if empty
+
+    hexadecimal=hexadecimal.lstrip('0')
+    if hexadecimal=='':
+        hexadecimal='0'
+
+    #differenciating between float and integer part
+
+    hexadecimal=hexadecimal+'.'
+
+    #initializing variables set 2
+
+    end_marker=0
+    begining_marker=0
+    dec_len=len(decimal)
+
+    #slicing out 4 digits and geting the corresponding map
+
+    while begining_marker<dec_len:
+        end_marker+=4
+        if begining_marker>dec_len:
+            begining_marker=dec_len
+        sliced=decimal[begining_marker:end_marker]
+        while len(sliced)<4:
+            sliced=sliced+'0'
+        hexadecimal=hexadecimal+NumMap[sliced]
+        begining_marker=end_marker
+
+    #returning the result
+
+    return hexadecimal
 
 
 #Main window creation and adding details
