@@ -25,6 +25,9 @@
 #version 1.0.5: Fixed: Quit Button NOT WORKING (Outside editor ONLY)
     #Updated on: 27/11/2018 9:55 pm
 
+#version 1.0.6: Added Decimal to Hexadecimal Converter
+    #Updated on: 30/11/2018 9:41 pm
+
 
 #importing modules
 
@@ -118,6 +121,47 @@ def B2O():
 
     B2Owin.mainloop()
 
+#Window+Widgets for Binary to Hexadecimal Conversion
+
+def B2H():
+
+    def bintohex():
+        output_text_widget.delete('1.0', END)
+        output_text_widget.insert(END,bin_hex(input_text_widget.get()))
+        
+    B2Hwin=Tk()
+    B2Hwin.title('Binary to Hexadecimal Converter')
+        
+    frame_outer=Frame(B2Hwin, bg='black')
+    frame_outer.pack(fill='both', expand=True, padx=5, pady=5)
+
+    frame_inner=Frame(frame_outer, bg=col)
+    frame_inner.pack(fill='both', expand=True, padx=2, pady=2)
+
+    f1=Frame(frame_inner, bg=col)
+    f2=Frame(frame_inner, bg=col)
+    f3=Frame(frame_inner, bg=col)
+    f4=Frame(frame_inner, bg=col)
+
+    f1.pack(fill='both', expand=True)
+    f2.pack(fill='both', expand=True)
+    f3.pack(fill='both', expand=True)
+    f4.pack(fill='both', expand=True)
+    
+    l0=Label(f1, font=('arial',25,'bold'), text='Input:', bg=col)
+    input_text_widget=Entry(f2)
+    execute_widget=Button(f2,text='    Convert   ',font=('arial',15,'bold'),command=bintohex)
+    l1=Label(f3, font=('arial',25,'bold'), text='Output:', bg=col)
+    output_text_widget=Text(f4, width=45, height=1)
+
+    l0.pack(side=LEFT, padx=10, pady=5, fill=BOTH)
+    input_text_widget.pack(side=LEFT, padx=10, pady=10, fill=BOTH)
+    execute_widget.pack(side=LEFT, padx=5, fill=BOTH)
+    l1.pack(side=LEFT, padx=5, fill=BOTH)
+    output_text_widget.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+
+    B2Hwin.mainloop()
+
 #Window+Widgets for Decimal to Octal Conversion
 
 def D2O():
@@ -158,6 +202,47 @@ def D2O():
     output_text_widget.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
     D2Owin.mainloop()
+
+#Window+Widgets for Decimal to Hexadecimal Conversion
+
+def D2H():
+
+    def dectohex():
+        output_text_widget.delete('1.0', END)
+        output_text_widget.insert(END,bin_hex(dec_bin(input_text_widget.get())))
+        
+    D2Hwin=Tk()
+    D2Hwin.title('Decimal to Hexadecimal Converter')
+        
+    frame_outer=Frame(D2Hwin, bg='black')
+    frame_outer.pack(fill='both', expand=True, padx=5, pady=5)
+
+    frame_inner=Frame(frame_outer, bg=col)
+    frame_inner.pack(fill='both', expand=True, padx=2, pady=2)
+
+    f1=Frame(frame_inner, bg=col)
+    f2=Frame(frame_inner, bg=col)
+    f3=Frame(frame_inner, bg=col)
+    f4=Frame(frame_inner, bg=col)
+
+    f1.pack(fill='both', expand=True)
+    f2.pack(fill='both', expand=True)
+    f3.pack(fill='both', expand=True)
+    f4.pack(fill='both', expand=True)
+    
+    l0=Label(f1, font=('arial',25,'bold'), text='Input:', bg=col)
+    input_text_widget=Entry(f2)
+    execute_widget=Button(f2,text='    Convert   ',font=('arial',15,'bold'),command=dectohex)
+    l1=Label(f3, font=('arial',25,'bold'), text='Output:', bg=col)
+    output_text_widget=Text(f4, width=45, height=1)
+
+    l0.pack(side=LEFT, padx=10, pady=5, fill=BOTH)
+    input_text_widget.pack(side=LEFT, padx=10, pady=10, fill=BOTH)
+    execute_widget.pack(side=LEFT, padx=5, fill=BOTH)
+    l1.pack(side=LEFT, padx=5, fill=BOTH)
+    output_text_widget.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+
+    D2Hwin.mainloop()
 
 #Window+Widgets for the program
 
@@ -457,7 +542,9 @@ submenu=Menu(MainMenu)
 MainMenu.add_cascade(label='File', menu=submenu)
 submenu.add_cascade(label='Decimal to Binary',command=D2B)
 submenu.add_cascade(label='Decimal to Octal',command=D2O)
+submenu.add_cascade(label='Decimal to Hexadecimal',command=D2H)
 submenu.add_cascade(label='Binary to Octal',command=B2O)
+submenu.add_cascade(label='Binary to Hexadecimal',command=B2H)
 submenu.add_separator()
 submenu.add_cascade(label='Credits',command=Credits)
 submenu.add_separator()
