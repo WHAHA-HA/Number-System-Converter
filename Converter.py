@@ -28,6 +28,9 @@
 #version 1.0.6: Added Decimal to Hexadecimal Converter
     #Updated on: 30/11/2018 9:41 pm
 
+#version 1.0.7: Added Binary to Decimal Function
+    #Updated on: 02/12/2018 1:49 pm
+
 
 #importing modules
 
@@ -526,6 +529,62 @@ def bin_hex(num):
     #returning the result
 
     return hexadecimal
+
+#Function for Converting Binary to Decimal
+
+def bin_dec(num):
+
+    #using the input (Eliminating a few potential errors)
+    
+    num=str(num)
+    num.lstrip()
+    num.rstrip()
+
+    #initializing variables
+    
+    integer=''
+    decimal=''
+    dec=0
+    temp_bin=''
+    flagdec=False
+    multiplier_int=1
+    multiplier_dec=0.5
+
+    #checking whether the input is a number
+
+    for i in num:
+        if i=='.' and flagdec==False:
+            flagdec=True
+        elif (i.isdigit()==False and i!='.') or (i=='.' and flagdec==True):
+            return 'Wrong Input. Please check the input again.'
+
+    #separating the integer and float part
+    
+    for i in range(len(num)):
+        if num[i]=='.':
+            decimal='0.'+num[i+1:]
+            break
+        integer+=num[i]
+        
+    if decimal=='':
+        decimal='0.0'
+    
+    if integer=='':
+        integer='0'
+
+    #finding the integer of integer part
+
+    for i in range(-1,-(len(integer))-1,-1):
+        dec+=int(integer[i])*multiplier_int
+        multiplier_int*=2        
+    
+    #finding the decimal of the float part
+
+    for i in range(2,len(decimal)):
+        dec+=int(decimal[i])*multiplier_dec
+        multiplier_dec/=2 
+
+    return (dec)
 
 
 #Main window creation and adding details
