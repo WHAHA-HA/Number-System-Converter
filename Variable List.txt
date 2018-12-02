@@ -26,3 +26,5 @@ flagdec             	bool              	local           False          	Checks f
 main_window         	tkinter.Tk        	global          -----          	Main(start-up) window
 MainMenu            	tkinter.Menu      	global          -----          	Main menu at the top
 submenu             	tkinter.Menu      	global          -----          	Submenu of MainMenu
+multiplier_int		int			local		1		Stores the integer multiplier of the corresponding position
+multiplier_dec		float			local		0.5		Stores the float multiplier of the corresponding position
