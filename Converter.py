@@ -31,6 +31,9 @@
 #version 1.0.7: Added Binary to Decimal Function
     #Updated on: 02/12/2018 1:49 pm
 
+#version 1.0.8: Added Binary to Decimal Converter and small changes to Credits
+    #Updated on: 03/12/2018 12:37 pm
+
 
 #importing modules
 
@@ -123,6 +126,47 @@ def B2O():
     output_text_widget.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
     B2Owin.mainloop()
+
+#Window+Widgets for Binary to Decimal Conversion
+
+def B2D():
+
+    def bintodec():
+        output_text_widget.delete('1.0', END)
+        output_text_widget.insert(END,bin_dec(input_text_widget.get()))
+        
+    B2Dwin=Tk()
+    B2Dwin.title('Binary to Decimal Converter')
+        
+    frame_outer=Frame(B2Dwin, bg='black')
+    frame_outer.pack(fill='both', expand=True, padx=5, pady=5)
+
+    frame_inner=Frame(frame_outer, bg=col)
+    frame_inner.pack(fill='both', expand=True, padx=2, pady=2)
+
+    f1=Frame(frame_inner, bg=col)
+    f2=Frame(frame_inner, bg=col)
+    f3=Frame(frame_inner, bg=col)
+    f4=Frame(frame_inner, bg=col)
+
+    f1.pack(fill='both', expand=True)
+    f2.pack(fill='both', expand=True)
+    f3.pack(fill='both', expand=True)
+    f4.pack(fill='both', expand=True)
+    
+    l0=Label(f1, font=('arial',25,'bold'), text='Input:', bg=col)
+    input_text_widget=Entry(f2)
+    execute_widget=Button(f2,text='    Convert   ',font=('arial',15,'bold'),command=bintodec)
+    l1=Label(f3, font=('arial',25,'bold'), text='Output:', bg=col)
+    output_text_widget=Text(f4, width=45, height=1)
+
+    l0.pack(side=LEFT, padx=10, pady=5, fill=BOTH)
+    input_text_widget.pack(side=LEFT, padx=10, pady=10, fill=BOTH)
+    execute_widget.pack(side=LEFT, padx=5, fill=BOTH)
+    l1.pack(side=LEFT, padx=5, fill=BOTH)
+    output_text_widget.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+
+    B2Dwin.mainloop()
 
 #Window+Widgets for Binary to Hexadecimal Conversion
 
@@ -263,14 +307,16 @@ def Credits():
     l0=Label(frame_inner, font=('arial',25,'bold','underline'), \
                  text='Front-end Designer:', bg=col)
     l0.pack(fill='both', expand=True, padx=50, pady=15)
-    l1=Label(frame_inner, font=('arial',20,'italic'), text='Tapajyoti Bose', bg=col)
+    l1=Label(frame_inner, font=('arial',20,'italic'), \
+             text='Tapajyoti Bose (I know I did a TERRIBLE JOB)', bg=col)
     l1.pack(fill='both', expand=True, padx=25, pady=15)
-
     l2=Label(frame_inner, font=('arial',25,'bold','underline'), \
-                 text='Back-end Coder:', bg=col)
+                 text='Back-end Coders:', bg=col)
     l2.pack(fill='both', expand=True, padx=50, pady=15)
     l3=Label(frame_inner, font=('arial',20,'italic'), text='Moumita Das', bg=col)
-    l3.pack(fill='both', expand=True, padx=25, pady=15)
+    l3.pack(fill='both', expand=True, padx=25, pady=10)
+    l4=Label(frame_inner, font=('arial',20,'italic'), text='Tapajyoti Bose', bg=col)
+    l4.pack(fill='both', expand=True, padx=25, pady=25)
 
     Cwin.mainloop()
 
@@ -602,6 +648,7 @@ MainMenu.add_cascade(label='File', menu=submenu)
 submenu.add_cascade(label='Decimal to Binary',command=D2B)
 submenu.add_cascade(label='Decimal to Octal',command=D2O)
 submenu.add_cascade(label='Decimal to Hexadecimal',command=D2H)
+submenu.add_cascade(label='Binary to Decimal',command=B2D)
 submenu.add_cascade(label='Binary to Octal',command=B2O)
 submenu.add_cascade(label='Binary to Hexadecimal',command=B2H)
 submenu.add_separator()
