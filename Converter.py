@@ -1,6 +1,6 @@
 #Number System Converter
 
-#Created on: 13/11/2018 9:36 am
+#Created on: 13/11/2018 09:36 am
 #version 1.0.0: Created the basic GUI and Decimal to Binary Converter+Bug Fixes(in the previous code)
     #Known Issues: Quit Button NOT WORKING,
     #Decimal to Binary Window widgets NOT EXPANDING TO FIT ACCORDING TO SCREEN-SIZE
@@ -8,31 +8,47 @@
 #version 1.0.1: Fixed: Decimal to Binary Window widgets NOT EXPANDING TO FIT ACCORDING TO SCREEN-SIZE
                 #Updated the Interface
     #Known Issues: Quit Button NOT WORKING
-    #Updated on: 25/11/2018 8:48 am
+    #Updated on: 25/11/2018 08:48 am
 
 #version 1.0.2: Added Binary to Octal Function
     #Known Issues: Quit Button NOT WORKING
-    #Updated on: 25/11/2018 9:16 am
+    #Updated on: 25/11/2018 09:16 am
 
 #version 1.0.3: Added Binary to Octal Converter
     #Known Issues: Quit Button NOT WORKING
-    #Updated on: 25/11/2018 9:22 am
+    #Updated on: 25/11/2018 09:22 am
 
 #version 1.0.4: Added Decimal to Hexadecimal Function
     #Known Issues: Quit Button NOT WORKING
-    #Updated on: 25/11/2018 9:26 am
+    #Updated on: 25/11/2018 09:26 am
 
 #version 1.0.5: Fixed: Quit Button NOT WORKING (Outside editor ONLY)
-    #Updated on: 27/11/2018 9:55 pm
+    #Updated on: 27/11/2018 09:55 pm
 
 #version 1.0.6: Added Decimal to Hexadecimal Converter
-    #Updated on: 30/11/2018 9:41 pm
+    #Updated on: 30/11/2018 09:41 pm
 
 #version 1.0.7: Added Binary to Decimal Function
-    #Updated on: 02/12/2018 1:49 pm
+    #Updated on: 02/12/2018 01:49 pm
 
-#version 1.0.8: Added Binary to Decimal Converter and small changes to Credits
+#version 1.0.8: Added Binary to Decimal Converter
     #Updated on: 03/12/2018 12:37 pm
+
+#version 1.0.8: Added Octal to Binary Function and Converter
+    #Updated on: 12/12/2018 12:51 pm
+
+#version 1.0.7: Added Hexadecimal to Binary Function
+    #Updated on: 12/12/2018 12:57 pm
+
+#version 1.0.8: Added Octal to Decimal and Octal Converter
+    #Updated on: 12/12/2018 01:05 pm
+
+#version 1.0.8: Added Octal to Decimal and Octal Converter
+    #Updated on: 12/12/2018 01:05 pm
+
+#version 1.0.8: Added Hexadecimal to Binary, Decimal and Octal Converter
+    #Known Issues: Errors in Hexadecimal to Ocatal conversion
+    #Updated on: 12/12/2018 01:15 pm
 
 
 #importing modules
@@ -280,6 +296,252 @@ def D2H():
     l0=Label(f1, font=('arial',25,'bold'), text='Input:', bg=col)
     input_text_widget=Entry(f2)
     execute_widget=Button(f2,text='    Convert   ',font=('arial',15,'bold'),command=dectohex)
+    l1=Label(f3, font=('arial',25,'bold'), text='Output:', bg=col)
+    output_text_widget=Text(f4, width=45, height=1)
+
+    l0.pack(side=LEFT, padx=10, pady=5, fill=BOTH)
+    input_text_widget.pack(side=LEFT, padx=10, pady=10, fill=BOTH)
+    execute_widget.pack(side=LEFT, padx=5, fill=BOTH)
+    l1.pack(side=LEFT, padx=5, fill=BOTH)
+    output_text_widget.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+
+    D2Hwin.mainloop()
+
+#Window+Widgets for Octal to Binary Conversion
+
+def O2B():
+
+    def octtobin():
+        output_text_widget.delete('1.0', END)
+        output_text_widget.insert(END,oct_bin(input_text_widget.get()))
+        
+    D2Hwin=Tk()
+    D2Hwin.title('Octal to Binary Converter')
+        
+    frame_outer=Frame(D2Hwin, bg='black')
+    frame_outer.pack(fill='both', expand=True, padx=5, pady=5)
+
+    frame_inner=Frame(frame_outer, bg=col)
+    frame_inner.pack(fill='both', expand=True, padx=2, pady=2)
+
+    f1=Frame(frame_inner, bg=col)
+    f2=Frame(frame_inner, bg=col)
+    f3=Frame(frame_inner, bg=col)
+    f4=Frame(frame_inner, bg=col)
+
+    f1.pack(fill='both', expand=True)
+    f2.pack(fill='both', expand=True)
+    f3.pack(fill='both', expand=True)
+    f4.pack(fill='both', expand=True)
+    
+    l0=Label(f1, font=('arial',25,'bold'), text='Input:', bg=col)
+    input_text_widget=Entry(f2)
+    execute_widget=Button(f2,text='    Convert   ',font=('arial',15,'bold'),command=octtobin)
+    l1=Label(f3, font=('arial',25,'bold'), text='Output:', bg=col)
+    output_text_widget=Text(f4, width=45, height=1)
+
+    l0.pack(side=LEFT, padx=10, pady=5, fill=BOTH)
+    input_text_widget.pack(side=LEFT, padx=10, pady=10, fill=BOTH)
+    execute_widget.pack(side=LEFT, padx=5, fill=BOTH)
+    l1.pack(side=LEFT, padx=5, fill=BOTH)
+    output_text_widget.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+
+    D2Hwin.mainloop()
+
+#Window+Widgets for Octal to Decimal Conversion
+
+def O2D():
+
+    def octtodec():
+        output_text_widget.delete('1.0', END)
+        output_text_widget.insert(END,bin_dec(oct_bin(input_text_widget.get())))
+        
+    D2Hwin=Tk()
+    D2Hwin.title('Octal to Decimal Converter')
+        
+    frame_outer=Frame(D2Hwin, bg='black')
+    frame_outer.pack(fill='both', expand=True, padx=5, pady=5)
+
+    frame_inner=Frame(frame_outer, bg=col)
+    frame_inner.pack(fill='both', expand=True, padx=2, pady=2)
+
+    f1=Frame(frame_inner, bg=col)
+    f2=Frame(frame_inner, bg=col)
+    f3=Frame(frame_inner, bg=col)
+    f4=Frame(frame_inner, bg=col)
+
+    f1.pack(fill='both', expand=True)
+    f2.pack(fill='both', expand=True)
+    f3.pack(fill='both', expand=True)
+    f4.pack(fill='both', expand=True)
+    
+    l0=Label(f1, font=('arial',25,'bold'), text='Input:', bg=col)
+    input_text_widget=Entry(f2)
+    execute_widget=Button(f2,text='    Convert   ',font=('arial',15,'bold'),command=octtodec)
+    l1=Label(f3, font=('arial',25,'bold'), text='Output:', bg=col)
+    output_text_widget=Text(f4, width=45, height=1)
+
+    l0.pack(side=LEFT, padx=10, pady=5, fill=BOTH)
+    input_text_widget.pack(side=LEFT, padx=10, pady=10, fill=BOTH)
+    execute_widget.pack(side=LEFT, padx=5, fill=BOTH)
+    l1.pack(side=LEFT, padx=5, fill=BOTH)
+    output_text_widget.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+
+    D2Hwin.mainloop()
+
+#Window+Widgets for Octal to Hexadecimal Conversion
+
+def O2H():
+
+    def octtohex():
+        output_text_widget.delete('1.0', END)
+        output_text_widget.insert(END,bin_hex(oct_bin(input_text_widget.get())))
+        
+    D2Hwin=Tk()
+    D2Hwin.title('Octal to Hexadecimal Converter')
+        
+    frame_outer=Frame(D2Hwin, bg='black')
+    frame_outer.pack(fill='both', expand=True, padx=5, pady=5)
+
+    frame_inner=Frame(frame_outer, bg=col)
+    frame_inner.pack(fill='both', expand=True, padx=2, pady=2)
+
+    f1=Frame(frame_inner, bg=col)
+    f2=Frame(frame_inner, bg=col)
+    f3=Frame(frame_inner, bg=col)
+    f4=Frame(frame_inner, bg=col)
+
+    f1.pack(fill='both', expand=True)
+    f2.pack(fill='both', expand=True)
+    f3.pack(fill='both', expand=True)
+    f4.pack(fill='both', expand=True)
+    
+    l0=Label(f1, font=('arial',25,'bold'), text='Input:', bg=col)
+    input_text_widget=Entry(f2)
+    execute_widget=Button(f2,text='    Convert   ',font=('arial',15,'bold'),command=octtohex)
+    l1=Label(f3, font=('arial',25,'bold'), text='Output:', bg=col)
+    output_text_widget=Text(f4, width=45, height=1)
+
+    l0.pack(side=LEFT, padx=10, pady=5, fill=BOTH)
+    input_text_widget.pack(side=LEFT, padx=10, pady=10, fill=BOTH)
+    execute_widget.pack(side=LEFT, padx=5, fill=BOTH)
+    l1.pack(side=LEFT, padx=5, fill=BOTH)
+    output_text_widget.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+
+    D2Hwin.mainloop()
+
+#Window+Widgets for Hexadecimal to Binary Conversion
+
+def H2B():
+
+    def hextobin():
+        output_text_widget.delete('1.0', END)
+        output_text_widget.insert(END,(hex_bin(input_text_widget.get())))
+        
+    D2Hwin=Tk()
+    D2Hwin.title('Hexadecimal to Binary Converter')
+        
+    frame_outer=Frame(D2Hwin, bg='black')
+    frame_outer.pack(fill='both', expand=True, padx=5, pady=5)
+
+    frame_inner=Frame(frame_outer, bg=col)
+    frame_inner.pack(fill='both', expand=True, padx=2, pady=2)
+
+    f1=Frame(frame_inner, bg=col)
+    f2=Frame(frame_inner, bg=col)
+    f3=Frame(frame_inner, bg=col)
+    f4=Frame(frame_inner, bg=col)
+
+    f1.pack(fill='both', expand=True)
+    f2.pack(fill='both', expand=True)
+    f3.pack(fill='both', expand=True)
+    f4.pack(fill='both', expand=True)
+    
+    l0=Label(f1, font=('arial',25,'bold'), text='Input:', bg=col)
+    input_text_widget=Entry(f2)
+    execute_widget=Button(f2,text='    Convert   ',font=('arial',15,'bold'),command=hextobin)
+    l1=Label(f3, font=('arial',25,'bold'), text='Output:', bg=col)
+    output_text_widget=Text(f4, width=45, height=1)
+
+    l0.pack(side=LEFT, padx=10, pady=5, fill=BOTH)
+    input_text_widget.pack(side=LEFT, padx=10, pady=10, fill=BOTH)
+    execute_widget.pack(side=LEFT, padx=5, fill=BOTH)
+    l1.pack(side=LEFT, padx=5, fill=BOTH)
+    output_text_widget.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+
+    D2Hwin.mainloop()
+
+#Window+Widgets for Hexadecimal to Decimal Conversion
+
+def H2D():
+
+    def hextodec():
+        output_text_widget.delete('1.0', END)
+        output_text_widget.insert(END,bin_dec(hex_bin(input_text_widget.get())))
+        
+    D2Hwin=Tk()
+    D2Hwin.title('Hexadecimal to Decimal Converter')
+        
+    frame_outer=Frame(D2Hwin, bg='black')
+    frame_outer.pack(fill='both', expand=True, padx=5, pady=5)
+
+    frame_inner=Frame(frame_outer, bg=col)
+    frame_inner.pack(fill='both', expand=True, padx=2, pady=2)
+
+    f1=Frame(frame_inner, bg=col)
+    f2=Frame(frame_inner, bg=col)
+    f3=Frame(frame_inner, bg=col)
+    f4=Frame(frame_inner, bg=col)
+
+    f1.pack(fill='both', expand=True)
+    f2.pack(fill='both', expand=True)
+    f3.pack(fill='both', expand=True)
+    f4.pack(fill='both', expand=True)
+    
+    l0=Label(f1, font=('arial',25,'bold'), text='Input:', bg=col)
+    input_text_widget=Entry(f2)
+    execute_widget=Button(f2,text='    Convert   ',font=('arial',15,'bold'),command=hextodec)
+    l1=Label(f3, font=('arial',25,'bold'), text='Output:', bg=col)
+    output_text_widget=Text(f4, width=45, height=1)
+
+    l0.pack(side=LEFT, padx=10, pady=5, fill=BOTH)
+    input_text_widget.pack(side=LEFT, padx=10, pady=10, fill=BOTH)
+    execute_widget.pack(side=LEFT, padx=5, fill=BOTH)
+    l1.pack(side=LEFT, padx=5, fill=BOTH)
+    output_text_widget.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+
+    D2Hwin.mainloop()
+
+#Window+Widgets for Hexadecimal to Octal Conversion
+
+def H2O():
+
+    def hextooct():
+        output_text_widget.delete('1.0', END)
+        output_text_widget.insert(END,bin_oct(hex_bin(input_text_widget.get())))
+        
+    D2Hwin=Tk()
+    D2Hwin.title('Hexadecimal to Octal Converter')
+        
+    frame_outer=Frame(D2Hwin, bg='black')
+    frame_outer.pack(fill='both', expand=True, padx=5, pady=5)
+
+    frame_inner=Frame(frame_outer, bg=col)
+    frame_inner.pack(fill='both', expand=True, padx=2, pady=2)
+
+    f1=Frame(frame_inner, bg=col)
+    f2=Frame(frame_inner, bg=col)
+    f3=Frame(frame_inner, bg=col)
+    f4=Frame(frame_inner, bg=col)
+
+    f1.pack(fill='both', expand=True)
+    f2.pack(fill='both', expand=True)
+    f3.pack(fill='both', expand=True)
+    f4.pack(fill='both', expand=True)
+    
+    l0=Label(f1, font=('arial',25,'bold'), text='Input:', bg=col)
+    input_text_widget=Entry(f2)
+    execute_widget=Button(f2,text='    Convert   ',font=('arial',15,'bold'),command=hextooct)
     l1=Label(f3, font=('arial',25,'bold'), text='Output:', bg=col)
     output_text_widget=Text(f4, width=45, height=1)
 
@@ -632,6 +894,74 @@ def bin_dec(num):
 
     return (dec)
 
+#Function for converting Octal to Binary
+
+def oct_bin(num):
+
+    #variables and converting to string
+
+    num=str(num)
+    num=num.lstrip('0')
+    if num=='':
+        num='0'
+    flagdec=False
+    binary=''
+
+    #defining the number mapping
+    
+    NumMap={'0':'000','1':'001','2':'010','3':'011','4':'100','5':'101','6':'110','7':'111'}
+
+    #converting the input to binary
+
+    for i in range(len(num)):
+        
+        if num[i]=='.' and flagdec==False:
+            flagdec=True
+            binary=binary+'.'
+            
+        elif num[i]=='.':
+            return 'Wrong Input. Please check the input again.'
+        
+        else:
+            binary=binary+NumMap[num[i]]
+            
+    return (binary.lstrip('0').rstrip('0'))
+
+#Function for converting Hexadecimal to Binary
+
+def hex_bin(num):
+
+    #variables and converting to string
+
+    num=str(num)
+    num=num.lstrip('0')
+    num=num.upper()
+    if num=='':
+        num='0'
+    flagdec=False
+    binary=''
+
+    #defining the number mapping
+    
+    NumMap={'0':'0000','1':'0001','2':'0010','3':'0011','4':'0100','5':'0101','6':'0110','7':'0111',\
+            '8':'1000','9':'1001','A':'1010','B':'1011','C':'1100','D':'1101','E':'1110','F':'1111'}
+
+    #converting the input to binary
+
+    for i in range(len(num)):
+        
+        if num[i]=='.' and flagdec==False:
+            flagdec=True
+            binary=binary+'.'
+            
+        elif num[i]=='.':
+            return 'Wrong Input. Please check the input again.'
+        
+        else:
+            binary=binary+NumMap[num[i]]
+            
+    return (binary.lstrip('0').rstrip('0'))
+
 
 #Main window creation and adding details
 
@@ -651,6 +981,12 @@ submenu.add_cascade(label='Decimal to Hexadecimal',command=D2H)
 submenu.add_cascade(label='Binary to Decimal',command=B2D)
 submenu.add_cascade(label='Binary to Octal',command=B2O)
 submenu.add_cascade(label='Binary to Hexadecimal',command=B2H)
+submenu.add_cascade(label='Octal to Binary',command=O2B)
+submenu.add_cascade(label='Octal to Decimal',command=O2D)
+submenu.add_cascade(label='Octal to Hexadecimal',command=O2H)
+submenu.add_cascade(label='Hexadecimal to Binary',command=H2B)
+submenu.add_cascade(label='Hexadecimal to Decimal',command=H2D)
+submenu.add_cascade(label='Hexadecimal to Octal',command=H2O)
 submenu.add_separator()
 submenu.add_cascade(label='Credits',command=Credits)
 submenu.add_separator()

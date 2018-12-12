@@ -10,6 +10,12 @@ D2Hwin              	tkinter.Tk        	local           -----          	Window f
 B2Owin              	tkinter.Tk        	local           -----          	Window for the Binary to Octal converter
 B2Hwin              	tkinter.Tk        	local           -----          	Window for the Binary to Hexadecimal converter
 B2Dwin              	tkinter.Tk        	local           -----          	Window for the Binary to Decimal converter
+O2Bwin              	tkinter.Tk        	local           -----          	Window for the Octal to Binary converter
+O2Dwin              	tkinter.Tk        	local           -----          	Window for the Octal to Decimal converter
+O2Hwin              	tkinter.Tk        	local           -----          	Window for the Octal to Hexadecimal converter
+H2Bwin              	tkinter.Tk        	local           -----          	Window for the Hexadecimal to Binary converter
+H2Dwin              	tkinter.Tk        	local           -----          	Window for the Hexadecimal to Decimal converter
+H2Owin              	tkinter.Tk        	local           -----          	Window for the Hexadecimal to Octal converter
 Cwin                	tkinter.Tk        	local           -----          	Window for Credits
 frame_outer         	tkinter.Frame     	local           -----          	Used to give the effect of border(same for all instance)
 frame_inner         	tkinter.Frame     	local           -----          	Used to give the effect of border(same for all instance)
