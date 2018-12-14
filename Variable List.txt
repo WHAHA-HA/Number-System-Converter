@@ -27,7 +27,7 @@ integer             	str to int        	local           ''             	Stores t
 decimal             	str to float      	local           ''             	Stores the float part of the num variable
 bin_num             	str to float      	local           ''             	Stores the converted binary
 octal             	str to float      	local           ''             	Stores the converted octal
-hexadecimal            	str to float      	local           ''             	Stores the converted hexadecimal
+hexadecimal		str to float      	local           ''             	Stores the converted hexadecimal
 temp_bin            	str to float      	local           ''             	Stores the float part(later concatenated to bin_num)
 flagdec             	bool              	local           False          	Checks for appearance of '.' in the num variable
 main_window         	tkinter.Tk        	global          -----          	Main(start-up) window
