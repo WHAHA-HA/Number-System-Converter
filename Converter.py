@@ -34,21 +34,22 @@
 #version 1.0.8: Added Binary to Decimal Converter
     #Updated on: 03/12/2018 12:37 pm
 
-#version 1.0.8: Added Octal to Binary Function and Converter
+#version 1.0.9: Added Octal to Binary Function and Converter
     #Updated on: 12/12/2018 12:51 pm
 
-#version 1.0.7: Added Hexadecimal to Binary Function
+#version 1.0.10: Added Hexadecimal to Binary Function
     #Updated on: 12/12/2018 12:57 pm
 
-#version 1.0.8: Added Octal to Decimal and Octal Converter
+#version 1.0.11: Added Octal to Decimal and Octal Converter
     #Updated on: 12/12/2018 01:05 pm
 
-#version 1.0.8: Added Octal to Decimal and Octal Converter
-    #Updated on: 12/12/2018 01:05 pm
-
-#version 1.0.8: Added Hexadecimal to Binary, Decimal and Octal Converter
+#version 1.0.12: Added Hexadecimal to Binary, Decimal and Octal Converter
     #Known Issues: Errors in Hexadecimal to Ocatal conversion
     #Updated on: 12/12/2018 01:15 pm
+
+#version 1.1.0: Complete Release
+    #Small UI Changes + Fixed: Errors in Hexadecimal to Ocatal conversion
+    #Updated on: 14/12/2018 07:37 pm
 
 
 #importing modules
@@ -978,12 +979,15 @@ MainMenu.add_cascade(label='File', menu=submenu)
 submenu.add_cascade(label='Decimal to Binary',command=D2B)
 submenu.add_cascade(label='Decimal to Octal',command=D2O)
 submenu.add_cascade(label='Decimal to Hexadecimal',command=D2H)
+submenu.add_separator()
 submenu.add_cascade(label='Binary to Decimal',command=B2D)
 submenu.add_cascade(label='Binary to Octal',command=B2O)
 submenu.add_cascade(label='Binary to Hexadecimal',command=B2H)
+submenu.add_separator()
 submenu.add_cascade(label='Octal to Binary',command=O2B)
 submenu.add_cascade(label='Octal to Decimal',command=O2D)
 submenu.add_cascade(label='Octal to Hexadecimal',command=O2H)
+submenu.add_separator()
 submenu.add_cascade(label='Hexadecimal to Binary',command=H2B)
 submenu.add_cascade(label='Hexadecimal to Decimal',command=H2D)
 submenu.add_cascade(label='Hexadecimal to Octal',command=H2O)
