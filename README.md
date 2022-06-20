@@ -4,3 +4,6 @@ This is a beginner friendly project (An application which is used to convert the
 # Languages/Frameworks Used
 * Python 3.x
 * Tkinter (Available by default upon python installation)
+
+# Author Contact
+Email: filiukbohdan123@gmail.com
